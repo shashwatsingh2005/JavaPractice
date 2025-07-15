@@ -83,7 +83,7 @@ public class StreamDemo {
         numbers1.add(23);
         numbers1.add(24);
         Stream<Integer> numStream = numbers1.stream();
-        //numbers1.add(21);
+        numbers1.add(21);
         numStream.forEach(p -> System.out.println(p));
         numbers1.add(21);
 
