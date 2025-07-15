@@ -24,6 +24,8 @@ public class StreamNonTerminalOps {
 		streamFilter();
 		// sorted() :: sorting the elements of the stream
 		streamSorted();
+		//map() ... demonstration of map
+		streamMap();
 	}
 
 	/**
@@ -81,6 +83,22 @@ public class StreamNonTerminalOps {
 		Stream<Integer> nextStream = stream.sorted().sorted((i1, i2) -> i2 - i1);
 		/**
 		 * Now all the operations will be executed both Filter and map
+		 */
+		nextStream.forEach(System.out::println);
+	}
+	
+	/**
+	 * Now we will depict the map Function. It is also one ofthe intermediate Operation.
+	 */
+	static void streamMap() {
+		intList = Arrays.asList(23, 21, 45, 11, 1, 6, 8, 6, 6, 11, 34, 56);
+		Stream<Integer> stream = intList.stream();
+		/**
+		 * Maps each element with the provided non-interfering,stateless function.
+		 */
+		Stream<Integer> nextStream = stream.map(i->i+1);
+		/**
+		 * Now printing each element 
 		 */
 		nextStream.forEach(System.out::println);
 	}
