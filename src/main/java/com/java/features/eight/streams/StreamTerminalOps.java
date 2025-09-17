@@ -6,8 +6,11 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
+import java.util.TreeMap;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 /**
  * @author Shashwat Singh Here we will see all Terminal Operations. 1.collect()
@@ -77,6 +80,28 @@ public class StreamTerminalOps {
 		Stream<String> vectList1 = strList.stream();
  		Optional<String> vectList2 = vectList1.collect(Collectors.reducing((s1,s2)->s1+s2));
 		System.out.println("Demonstration of Reducing :: " + vectList2);
+		Stream<String> vectList3 = strList.stream();
+		double average = vectList3.collect(Collectors.averagingDouble(s->s.length()));
+		System.out.println("Demonstrating collect ---- Average : "+average);
+		Stream<String> vectList4 = strList.stream();
+		String collectExample = vectList4.collect(Collectors.joining("-"));
+		System.out.println("Demonstrating collect ---- joining(String arg) : "+collectExample);
+		Stream<String> vectList5 = strList.stream();
+		Map<String,Integer> mapCollect = vectList5.collect(Collectors.toMap(s->s, s->s.length()));
+		//Here in to map first arg is the key and second arg is the value.
+		System.out.println("Demonstrating collect ---- toMap(String arg,Integer arg2) :"+mapCollect);
+		Stream<String> vectList6 = strList.stream();
+		Map<Integer,String> mapCollect1 = vectList6.collect(Collectors.toMap(s->s.length(), s->s,(s1,s2)->s1+" :: "+s2));
+		//Here in to map first arg is the key and second arg is the value.And we provide BiFunction to merge two objects with same value
+		System.out.println("Demonstrating collect ---- toMap(Integr arg,String arg2,BiFunction mergeFunction) :"+mapCollect1);
+		List<String >strList1 = Arrays.asList("hello", "shashwat", "how", "are", "you", "Is", "Everything", "going", "well", "Is");
+		Stream<String> vectList7 = strList1.stream();
+		Map<String,Integer> mapCollect2 = vectList7.collect(Collectors.toMap(s->s, s->s.length(), (s1,s2)->s1+s2, ()->new TreeMap<String, Integer>()));
+		//Here in to map first arg is the key and second arg is the value.And we provide BiFunction to merge two objects with same value
+		//And fourth Argument is the type of map we need.
+		System.out.println("Demonstrating collect ---- toMap(Integr arg,String arg2,BiFunction mergeFunction,Supplier s) :"+mapCollect2);
+		
+		
 
 	}
 }
