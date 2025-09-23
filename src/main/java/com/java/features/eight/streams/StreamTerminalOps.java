@@ -101,6 +101,13 @@ public class StreamTerminalOps {
 		//And fourth Argument is the type of map we need.
 		System.out.println("Demonstrating collect ---- toMap(Integr arg,String arg2,BiFunction mergeFunction,Supplier s) :"+mapCollect2);
 		
+		System.out.println("===========================================JAVA EQUALS=====================================================");
+		String a = "java";
+		String b = "java";
+		String c = new String ("java");
+		
+		System.out.println(a==c);
+		
 		
 
 	}
