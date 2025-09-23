@@ -69,6 +69,19 @@ public class EmployeeStreamDemo {
 		System.out.println("Average Age of Male and Female : " + dataMap3);
 		System.out.println(
 				"=========================================================================================================");
+		System.out.println("Find Average age of Male And Female in each Department");
+		Map<String, Map<String, Double>> dataMap4 = empList.stream()
+				.collect(Collectors.groupingBy(Employee::getDeptName,
+						Collectors.groupingBy(Employee::getGender, Collectors.averagingDouble(Employee::getAge))));
+		System.out.println("Department wise Age Average : " + dataMap4);
+		System.out.println(
+				"=========================================================================================================");
+		System.out.println("Getting the Longes Serving Employee");
+		Optional<Employee> employee1 = empList.stream().sorted(Comparator.comparing(Employee::getYearOfJoining))
+				.min((e1, e2) -> e1.getYearOfJoining() - e2.getYearOfJoining());
+		System.out.println("Longest Serving Employee : "+employee1.get().getName());
+		System.out.println(
+				"=========================================================================================================");
 
 	}
 }
