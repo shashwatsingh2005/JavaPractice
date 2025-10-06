@@ -34,6 +34,10 @@ public class StreamTerminalOps {
 	public static void main(String[] args) {
 		// collect() method demo call
 		streamCollect();
+		// anyMatch method demo call
+		streamAnyMatch();
+		// Demo for Lazy nature of streams
+		streamLazyDemo();
 	}
 
 	/**
@@ -110,5 +114,32 @@ public class StreamTerminalOps {
 		
 		
 
+	}
+	
+		/**
+	 * 2.anyMatch() : Demo
+	 */
+	static void streamAnyMatch() {
+		intList = Arrays.asList(23, 21, 45, 11, 1, 6, 8, 6, 6, 11, 34, 56);
+		Stream<Integer> stream = intList.stream();
+		boolean isAnyMatch = stream.map(i -> "Mapped i : " + i).anyMatch(i -> (i.equals("Mapped i : 21")));
+		System.out.println("Is there any Match : " + isAnyMatch);
+	}
+
+	/**
+	 * Demo for lazy nature of stream
+	 */
+	static void streamLazyDemo() {
+		strList = Arrays.asList("Shashwat", "Divyanshu", "Smit", "Ankita", "Rohit", "January", "May");
+
+		Stream<String> stream = strList.stream();
+
+		stream.peek(s -> System.out.println("peek () : " + s)).filter(s -> {
+			System.out.println("filter () " + s);
+			return s.length() >= 8;
+		}).filter(s -> {
+			System.out.println("filter ()");
+			return s.startsWith("S");
+		}).limit(1).forEach(System.out::println); // limit(long) : limits the times when a terminal operation is done
 	}
 }

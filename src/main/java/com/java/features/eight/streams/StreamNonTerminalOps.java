@@ -12,7 +12,10 @@ public class StreamNonTerminalOps {
 	 * Initial Stream for Demo.
 	 */
 	private static List<Integer> intList = null;
-
+/**
+ * Initial String List...
+ */
+	private static List<String> strList = null;
 	/**
 	 * Main Method Depicting all other Non Terminal Methods Demo. Here we will be
 	 * calling all Methods One by one.
@@ -85,6 +88,14 @@ public class StreamNonTerminalOps {
 		 * Now all the operations will be executed both Filter and map
 		 */
 		nextStream.forEach(System.out::println);
+		/**
+		 * Demonstrating sorting based on second Character
+		 */
+		strList = Arrays.asList("Shashwat","Divyanshu","Shashank","Sunil","Mohan");
+		/**
+		 * Sorting and printing based on second Character
+		 */
+		strList.stream().sorted((s1,s2)-> s1.charAt(1) - s2.charAt(1)).forEach(System.out::println);
 	}
 	
 	/**
